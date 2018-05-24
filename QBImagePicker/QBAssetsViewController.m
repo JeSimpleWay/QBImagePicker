@@ -246,7 +246,11 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
             default:
                 break;
         }
-        
+
+        if (self.imagePickerController.assetsSortDescriptors) {
+            options.sortDescriptors = self.imagePickerController.assetsSortDescriptors;
+        }
+
         self.fetchResult = [PHAsset fetchAssetsInAssetCollection:self.assetCollection options:options];
         
         if ([self isAutoDeselectEnabled] && self.imagePickerController.selectedAssets.count > 0) {
